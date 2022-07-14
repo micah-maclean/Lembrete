@@ -76,3 +76,7 @@ main > div {
 main > div > button {  
     width: 50px;
 }
+
+.nao-visivel {
+    display: none;
+}
