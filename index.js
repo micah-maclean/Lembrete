@@ -25,7 +25,7 @@ const criarLembrete = (event, descricao, data) => {
  
   let [ano, mes] = resultadoData.split("/")
 
-  if(!ano || !mes) {
+  if((!ano || !mes) || ano.length !== 4 || !(mes.length <= 2)) {
     alert("Digite uma data no formato valido: ex: 2022/07")
     criarLembrete(event, resultadoDescricao)
     return
@@ -56,6 +56,7 @@ const criarLembrete = (event, descricao, data) => {
 
   ano = novaData.getFullYear()
   mes = novaData.getMonth()
+
   const chave = `${formatosMes[mes]}, ${ano}`
 
   if(!listaLembretes.has(chave)) {
@@ -85,12 +86,12 @@ const decrementarMes = () => {
 }
 
 const incrementarMes = () => {
- dataAtual.setMonth(++mesAtual)
- anoAtual = dataAtual.getFullYear()
- mesAtual = dataAtual.getMonth()
+  dataAtual.setMonth(++mesAtual)
+  anoAtual = dataAtual.getFullYear()
+  mesAtual = dataAtual.getMonth()
 
- const chave = `${formatosMes[mesAtual]}, ${anoAtual}`
- dataTexto.textContent = chave
+  const chave = `${formatosMes[mesAtual]}, ${anoAtual}`
+  dataTexto.textContent = chave
  
   criarLista(chave)
 }
