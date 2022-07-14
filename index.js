@@ -22,11 +22,13 @@ const criarLembrete = (event, descricao, data) => {
   }
 
   const resultadoData =  data ? data : prompt("Digite o ano e o mês: ano/mês")
- 
+  
   let [ano, mes] = resultadoData.split("/")
 
-  if((!ano || !mes) || ano.length !== 4 || !(mes.length <= 2)) {
-    alert("Digite uma data no formato valido: ex: 2022/07")
+  mes = parseInt(mes)
+
+  if((!ano || !mes) || ano.length !== 4 || !(mes.toString().length <= 2) || !(mes > 0 && mes <= 12)) {
+    alert("Digite uma data no formato valido e entre o mes 1 e 12: ex: 2022/07")
     criarLembrete(event, resultadoDescricao)
     return
   }
